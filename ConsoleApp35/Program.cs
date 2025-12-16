@@ -43,13 +43,6 @@ class Program
         }
 
         outp = "";
-        while (!int.TryParse(outp, out arriveInterval))
-        {
-            Console.WriteLine("Please input the interval in which batches of customers will arrive:");
-            outp = Console.ReadLine();
-        }
-
-        outp = "";
         while (!int.TryParse(outp, out numRegisters))
         {
             Console.WriteLine("Please input the amount of registers the simulated store has:");
@@ -84,14 +77,32 @@ class Program
         while (remTime > 0)
         {
             int timeInStep = 0;
+
+            remTime = SubstractRemTime(timeInStep, remTime, arriveInterval, rnd, minNew, maxNew, maxItems, customers,
+                ref lastId);
+        }
+    }
+
+    private static int SubstractRemTime(int minutes, int remTime, int arriveInterval, Random rnd, int minNew,
+        int maxNew,
+        int maxItems, List<Customer> customers, ref int lastId)
+    {
+        for (int i = 0; i < minutes; i++)
+        {
+            if (remTime <= 0) break;
             if (remTime % arriveInterval == 0)
             {
-                for (int i = 0; i < rnd.Next(minNew, maxNew + 1); i++)
+                for (int j = 0; j < rnd.Next(minNew, maxNew + 1); j++)
                 {
                     Customer tempCustomer = new Customer(lastId + 1, 0, rnd.Next(0, maxItems + 1), 0, false);
                     lastId = tempCustomer.Id;
+                    customers.Add(tempCustomer);
                 }
             }
+
+            remTime--;
         }
+
+        return remTime;
     }
 }
