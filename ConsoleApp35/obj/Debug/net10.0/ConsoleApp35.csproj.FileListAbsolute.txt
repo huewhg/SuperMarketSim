@@ -1,0 +1,15 @@
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/bin/Debug/net10.0/ConsoleApp35
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/bin/Debug/net10.0/ConsoleApp35.deps.json
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/bin/Debug/net10.0/ConsoleApp35.runtimeconfig.json
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/bin/Debug/net10.0/ConsoleApp35.dll
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/bin/Debug/net10.0/ConsoleApp35.pdb
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.GeneratedMSBuildEditorConfig.editorconfig
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.AssemblyInfoInputs.cache
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.AssemblyInfo.cs
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.csproj.CoreCompileInputs.cache
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.sourcelink.json
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.dll
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/refint/ConsoleApp35.dll
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.pdb
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ConsoleApp35.genruntimeconfig.cache
+/home/adam/RiderProjects/ConsoleApp35/ConsoleApp35/obj/Debug/net10.0/ref/ConsoleApp35.dll

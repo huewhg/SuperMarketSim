@@ -6,7 +6,7 @@ public class Customer
     public int TimeSpent;
     public int Items;
     public int TimeQueueing;
-    bool queueing = false;
+    public bool queueing = false;
 
     public Customer(int id, int timeSpent, int items, int timeQueueing, bool queueing)
     {

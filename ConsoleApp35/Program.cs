@@ -14,6 +14,7 @@ class Program
         int timePerItem;
         int maxItems;
         int leaveProbability;
+        int timePerItemCustomer = 3;
         string outp = "";
         while (!int.TryParse(outp, out arriveInterval))
         {
@@ -50,7 +51,7 @@ class Program
         }
 
         outp = "";
-        while (!int.TryParse(outp, out timePerItem))
+        while (!int.TryParse(outp, out timePerItemCustomer))
         {
             Console.WriteLine("Please input the time per scanning of one item:");
             outp = Console.ReadLine();
@@ -77,9 +78,30 @@ class Program
         while (remTime > 0)
         {
             int timeInStep = 0;
+            foreach (Customer c in customers)
+            {
+                c.TimeSpent++;
+                if (c.queueing)
+                    c.TimeQueueing++;
+                else
+                {
+                    if (c.TimeSpent > c.Items * timePerItemCustomer)
+                    {
+                        c.queueing = true;
+                        Console.WriteLine($"Customer {c.Id} has started queueing!");
+                    }
+                    else
+                    {
+                        timeInStep += timePerItemCustomer;
+                        Console.WriteLine(
+                            $"Customer {c.Id} has {(int)(c.TimeSpent / timePerItemCustomer)} out of {c.Items} items!");
+                    }
+                }
+            }
 
             remTime = SubstractRemTime(timeInStep, remTime, arriveInterval, rnd, minNew, maxNew, maxItems, customers,
                 ref lastId);
+            Console.WriteLine($"\x1b[1m{remTime} simulation time remaining!\x1b[0m");
         }
     }
 
@@ -87,21 +109,34 @@ class Program
         int maxNew,
         int maxItems, List<Customer> customers, ref int lastId)
     {
-        for (int i = 0; i < minutes; i++)
+        if (remTime <= 0) return remTime;
+
+        if (remTime % arriveInterval == 0)
         {
-            if (remTime <= 0) break;
-            if (remTime % arriveInterval == 0)
+            int incomingCount = rnd.Next(minNew, maxNew + 1);
+
+            for (int j = 0; j < incomingCount; j++)
             {
-                for (int j = 0; j < rnd.Next(minNew, maxNew + 1); j++)
-                {
-                    Customer tempCustomer = new Customer(lastId + 1, 0, rnd.Next(0, maxItems + 1), 0, false);
-                    lastId = tempCustomer.Id;
-                    customers.Add(tempCustomer);
-                }
+                int max;
+                if (maxItems < 0) max = int.MaxValue;
+                else max = maxItems;
+
+                Customer tempCustomer = new Customer(
+                    lastId + 1,
+                    0,
+                    rnd.Next(0, maxItems),
+                    0,
+                    false
+                );
+
+                lastId = tempCustomer.Id;
+                customers.Add(tempCustomer);
             }
 
-            remTime--;
+            Console.WriteLine($"{incomingCount} customers were added to the store!");
         }
+
+        remTime--;
 
         return remTime;
     }
