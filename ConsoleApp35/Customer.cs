@@ -7,6 +7,8 @@ public class Customer
     public int Items;
     public int TimeQueueing;
     public bool queueing = false;
+    public Register reg = null;
+
 
     public Customer(int id, int timeSpent, int items, int timeQueueing, bool queueing)
     {
