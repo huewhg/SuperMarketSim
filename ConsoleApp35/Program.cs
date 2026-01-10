@@ -10,7 +10,7 @@ class Program
         const int DEFAULT_SIM_LENGTH = 60;
         const int DEFAULT_MAX_NEW = 5;
         const int DEFAULT_MIN_NEW = 1;
-        const int DEFAULT_NUM_REGISTERS = 2;
+        const int DEFAULT_NUM_REGISTERS = 5;
         const int DEFAULT_TIME_PER_ITEM = 3;
         const int DEFAULT_MAX_ITEMS = 30;
         const int DEFAULT_LEAVE_PROB = 50;
@@ -132,7 +132,7 @@ class Program
                 }
                 else
                 {
-                    if (c.TimeSpent > c.Items * timePerItemCustomer)
+                    if (c.TimeSpent >= c.Items * timePerItemCustomer)
                     {
                         c.queueing = true;
                         int min = int.MaxValue;
@@ -160,10 +160,19 @@ class Program
                 }
             }
 
+            foreach (Register r in registers)
+
+            {
+                Console.WriteLine($"First in line at register {r.Id}");
+                if (r.Queue.Count > 0) Console.WriteLine(r.Queue[0].Id);
+                Console.WriteLine($"Customers in line at register {r.Id}: {r.Queue.Count}");
+            }
+
             foreach (Customer l in left)
                 customers.Remove(l);
 
             left = new List<Customer>();
+
 
             remTime = SubstractRemTime(timeInStep, remTime, arriveInterval, rnd, minNew, maxNew, maxItems, customers,
                 ref lastId);
