@@ -3,11 +3,13 @@ namespace ConsoleApp35;
 public class Customer
 {
     public int Id;
-    public int TimeSpent;
     public int Items;
-    public int TimeQueueing;
-    public bool queueing = false;
+    public bool queueing;
     public Register reg = null;
+    public int TimeQueueing;
+    public int TimeSpent;
+    public bool beingServed;
+    public int RemainingCheckoutTime;
 
 
     public Customer(int id, int timeSpent, int items, int timeQueueing, bool queueing)
