@@ -115,21 +115,21 @@ internal class Program
             allcheckedOut += checkedOut;
         }
 
-        int sumQ = new int();
-        int sumS = new int();
+        int q = new int();
+        int s = new int();
 
         foreach (int t in allTimesQ)
         {
-            sumQ += t;
+            q += t;
         }
 
         foreach (int t in allTimesS)
         {
-            sumS += t;
+            s += t;
         }
 
         Console.WriteLine(
-            $"Checked out {allcheckedOut} customers, which waited for {(double)sumQ / allTimesQ.Count} minutes, and shopped for an avreage of {(double)sumS / allTimesS.Count} minutes.");
+            $"Checked out {allcheckedOut} customers, which waited for {(double)q / allTimesQ.Count} minutes, and shopped for an avreage of {(double)s / allTimesS.Count} minutes.");
     }
 
     private static (List<int> timesQueueing, List<int> timesSpent, int checkedOut) NewMethod(int simLength,
